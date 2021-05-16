@@ -15,6 +15,10 @@ public class Plant {
 	private String ip;
 	private int port;
 
+	public Plant(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) {
@@ -24,14 +28,12 @@ public class Plant {
 			return false;
 		}
 		Plant plant = (Plant) o;
-		return port == plant.port &&
-				Objects.equals(name, plant.name) &&
-				Objects.equals(ip, plant.ip);
+		return Objects.equals(name, plant.name);
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(name, ip, port);
+		return Objects.hash(name);
 	}
 
 	@Data
@@ -39,7 +41,7 @@ public class Plant {
 	@NoArgsConstructor
 	public static class State {
 		private String time;
-		private int humidity;
-		private int temperature;
+		private float humidity;
+		private float temperature;
 	}
 }

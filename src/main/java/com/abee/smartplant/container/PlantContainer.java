@@ -9,17 +9,23 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class PlantContainer {
 
-	private Map<Plant, List<Plant.State>> map = new ConcurrentHashMap<>();
+	private static Map<Plant, List<Plant.State>> map = new ConcurrentHashMap<>();
 
-	public void put(Plant plant, Plant.State state) {
+	public static void put(Plant plant) {
+		put(plant, null);
+	}
+
+	public static void put(Plant plant, Plant.State state) {
 		if (!map.containsKey(plant)) {
 			map.put(plant, new LinkedList<>());
 		}
-		List<Plant.State> states = map.get(plant);
-		states.add(state);
+		if (state != null) {
+			List<Plant.State> states = map.get(plant);
+			states.add(state);
+		}
 	}
 
-	public List<Plant.State> get(Plant plant) {
+	public static List<Plant.State> get(Plant plant) {
 		return map.get(plant);
 	}
 }
