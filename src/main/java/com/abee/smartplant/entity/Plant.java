@@ -43,5 +43,7 @@ public class Plant {
 		private String time;
 		private float humidity;
 		private float temperature;
+		private int soilHumidity;
+		private int waterDepth;
 	}
 }

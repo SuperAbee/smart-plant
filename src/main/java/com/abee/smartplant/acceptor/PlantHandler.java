@@ -51,6 +51,12 @@ public class PlantHandler extends ChannelInboundHandlerAdapter {
 			if ("h".equals(kv[0])) {
 				state.setHumidity(Float.parseFloat(kv[1]));
 			}
+			if ("s".equals(kv[0])) {
+				state.setSoilHumidity(Integer.parseInt(kv[1]));
+			}
+			if ("w".equals(kv[0])) {
+				state.setWaterDepth(Integer.parseInt(kv[1]));
+			}
 		}
 		PlantContainer.put(p, state);
 	}
